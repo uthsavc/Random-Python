@@ -13,9 +13,9 @@ def spamming(user, message_user, message_pass):
 	r = praw.Reddit("Spammer Bot 9001")
 	r.login(message_user, message_pass)
 
-	gina = r.get_redditor(user)
+	user = r.get_redditor(user)
 
-	w=gina.get_comments(limit=1)
+	w=user.get_comments(limit=1)
 	latest_id="";
 	for i in w:
 		latest_id = i.id
@@ -23,7 +23,7 @@ def spamming(user, message_user, message_pass):
 	msg = "So I see you made a post, eh?"
 
 	while True:
-		w=gina.get_comments(limit=1)
+		w=user.get_comments(limit=1)
 		for j in w:
 			w_id = j.id
 			if w_id != latest_id:
